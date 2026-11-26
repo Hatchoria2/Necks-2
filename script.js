@@ -1,4 +1,4 @@
-// Supabase Auth + 週間正解数ランキング
+// Supabase Auth + 週間得点ランキング（正解1問につき1点）
 // Publishable Keyはブラウザ用です。Secret / service_role keyは絶対に記載しないでください。
 const SUPABASE_URL = 'https://icmzxmqrudsgqwyweoij.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_irFnf7zdqozmssJq_6xhxg_BD0dk9d6';
@@ -141,7 +141,7 @@ async function loadRanking() {
       const label = document.createElement('span');
       label.textContent = `${i + 1}位　${row.account_name || 'プレイヤー'}${row.is_me ? '（あなた）' : ''}　`;
       const count = document.createElement('span'); count.className = 'ranking-count';
-      count.textContent = `${row.correct_count}問正解`;
+      count.textContent = `${row.score_points}点 ／ ${row.correct_count}問正解`;
       li.append(label, count); list.appendChild(li);
     });
   } catch (e) {
